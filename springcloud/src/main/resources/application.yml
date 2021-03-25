@@ -1,0 +1,9 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: springcloud-demo
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.106:8848/
