@@ -7,3 +7,23 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848/
+    sentinel:
+      transport:
+        # sentinel服务端地址
+        dashboard: 127.0.0.1:8858
+      # 取消延迟加载
+      eager: true
+      #限流数据源配置
+      datasource:
+          ds:
+            nacos:
+              server-addr: 127.0.0.1:8848
+              data-id: ${spring.application.name}-sentinel
+              group-id: DEFAULT_GROUP
+              rule-type: flow
+          ds1:
+            nacos:
+              server-addr: 127.0.0.1:8848
+              data-id: ${spring.application.name}-sentinel-degrade
+              group-id: DEFAULT_GROUP
+              rule-type: degrade
