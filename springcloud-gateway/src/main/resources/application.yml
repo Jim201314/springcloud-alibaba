@@ -1,9 +1,24 @@
-server:
-  port: 8012
+erver:
+  port: 8080
 spring:
-  application:
-    name: springcloud-consumer-demo
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848/
+        server-addr: 10.0.10.48:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: springcloud-provicer-demo
+          uri: lb://springcloud-provicer-demo
+          predicates:
+            - Path=/product/**
+#        - id: account-service
+#          uri: lb://account-service
+#          predicates:
+#            - Path=/account/**
+#        - id: order-service
+#          uri: lb://order-service
+#          predicates:
+#            - Path=/order/**
